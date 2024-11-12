@@ -1,0 +1,11 @@
+{
+    "name": "KanyeWest",
+    "alias": "kanyewest",
+    "description": "",
+    "keywords": [],
+    "priority": 0,
+    "providers": [
+        "Modules\\KanyeWest\\App\\Providers\\KanyeWestServiceProvider"
+    ],
+    "files": []
+}
