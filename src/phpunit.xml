@@ -6,7 +6,8 @@
 >
     <testsuites>
         <testsuite name="Modules">
-            <directory suffix="Test.php">Modules/News/tests/Unit</directory>
+            <directory suffix="Test.php">Modules/KanyeWest/tests/Unit</directory>
+            <directory suffix="Test.php">tests</directory>
         </testsuite>
     </testsuites>
     <source>

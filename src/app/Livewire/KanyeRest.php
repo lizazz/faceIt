@@ -2,30 +2,34 @@
 
 namespace App\Livewire;
 
-use GuzzleHttp\Client;
-use Illuminate\Support\Facades\Http;
+use App\Services\KanyeRestService;
+use Illuminate\View\View;
 use Livewire\Component;
 
 class KanyeRest extends Component
 {
     public $quotes = [];
+    private KanyeRestService $kanyeRestService;
 
-    public function update()
+    public function __construct()
     {
-        $this->mount();
+        $this->kanyeRestService = app()->make(KanyeRestService::class);
     }
 
-    public function mount()
+    public function update(): void
     {
-       // $client = new Client(['timeout' => 6]);
-       // $response = $client->get('https://api.kanye.rest');
-      //  $this->quotes = json_decode($response->getBody()->getContents(), true);
-        $response = Http::get('http://laravel.test/api/v1/kanye-rest')->json();
-        dd($response->json());
+        $this->quotes = $this->kanyeRestService->updateQuotes();
     }
 
-    public function render()
+    public function mount(): void
+    {
+        $this->quotes = $this->kanyeRestService->getQuotes();
+    }
+
+    public function render(): View
     {
         return view('livewire.kanye-rest');
     }
+
+
 }

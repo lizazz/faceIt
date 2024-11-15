@@ -62,7 +62,8 @@ While I originally created this template for local development, it's robust enou
 
 ## Compiling Assets
 
-This configuration should be able to compile assets with both [laravel mix](https://laravel-mix.com/) and [vite](https://vitejs.dev/). In order to get started, you first need to add ` --host 0.0.0.0` after the end of your relevant dev command in `package.json`. So for example, with a Laravel project using Vite, you should see:
+This configuration should be able to compile assets with both [laravel mix](https://laravel-mix.com/) and [vite](https://vitejs.dev/). In order to get started, you first need to add ` --host 0.0.0.0` after the
+end of your relevant dev command in `package.json`. So for example, with a Laravel project using Vite, you should see:
 
 ```json
 "scripts": {

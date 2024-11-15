@@ -15,5 +15,5 @@ use Modules\KanyeWest\App\Http\Controllers\KanyeWestController;
 */
 
 Route::group(['prefix' => 'kanyewest'], function () {
-    Route::get('/', [KanyeWestController::class, 'index'])->name('kanyewest.index');
+    Route::get('/', [KanyeWestController::class, 'index'])->middleware('auth')->name('kanyewest.index');
 });

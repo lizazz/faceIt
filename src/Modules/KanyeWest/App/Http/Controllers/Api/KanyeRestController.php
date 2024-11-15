@@ -2,18 +2,28 @@
 
 namespace Modules\KanyeWest\App\Http\Controllers\Api;
 
-use Illuminate\Support\Facades\Http;
+use Illuminate\Http\JsonResponse;
+use Modules\KanyeWest\App\Services\KanyeWestApiService;
 
-class KanyeRestController
+readonly class KanyeRestController
 {
-    public function index()
+    public function __construct(private KanyeWestApiService $apiService) {}
+
+    public function index(): JsonResponse
     {
-        return response()->json(['text' => ['test']]);
+        $quotes = $this->apiService->getQuotes();
+
+        if (!isset($quotes['quotes'])) {
+            $quotes = $this->apiService->updateQuotes();
+        }
+
+        return response()->json(['quotes' => $quotes]);
     }
 
-    public function index2()
+    public function update(): JsonResponse
     {
-        $response = Http::get('http://laravel.test/api/v1/kanye-rest')->json();
-        return $response->json();
+        $quotes = $this->apiService->updateQuotes();
+
+        return response()->json(['quotes' => $quotes]);
     }
 }

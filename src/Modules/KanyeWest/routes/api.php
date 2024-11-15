@@ -15,7 +15,8 @@ use Modules\KanyeWest\App\Http\Controllers\Api\KanyeRestController;
     |
 */
 
-Route::group(['prefix' => 'v1'], function () {
-    Route::get('kanye-rest', [KanyeRestController::class, 'index']);
-    Route::get('kanye-rest2', [KanyeRestController::class, 'index2']);
+Route::middleware('api.token')->prefix('v1/kanye-rest')->group(function () {
+    Route::get('/', [KanyeRestController::class, 'index'])->name('api.kanye.rest.index');
+    Route::get('/update', [KanyeRestController::class, 'update'])->middleware('api.token')
+        ->name('api.kanye.rest.update');
 });
